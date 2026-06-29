@@ -1,0 +1,137 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* 主色 —— 深色情报中枢 */
+  --verideep-primary: #00d5ff;
+  --verideep-primary-soft: #35f2d0;
+  --verideep-primary-tint: #102d38;
+  --verideep-primary-deep: #8be9ff;
+
+  /* 琥珀高亮 */
+  --verideep-sun: #ffb84d;
+  --verideep-sun-soft: #372915;
+
+  /* 墨色文字（禁纯黑白） */
+  --verideep-ink: #eaf4f8;
+  --verideep-ink-2: #a8bcc7;
+  --verideep-ink-3: #6f8390;
+  --verideep-line: #203542;
+  --verideep-bg: #07111a;
+  --verideep-card: #0d1b26;
+  --verideep-paper: #101f2b;
+
+  /* 语义色 */
+  --verideep-ok: #48d597;
+  --verideep-warn: #ffb84d;
+  --verideep-risk: #ff6b7a;
+  --verideep-info: #7aa7ff;
+
+  /* 圆角 */
+  --r-card: 16px;
+  --r-btn: 12px;
+  --r-chip: 999px;
+
+  /* 阴影 */
+  --shadow-card: 0 12px 34px rgba(0, 0, 0, 0.22);
+  --shadow-float: 0 18px 60px rgba(0, 213, 255, 0.18);
+
+  /* 统一缓动 */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* 8pt 间距系统 */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px;
+  --s5: 24px; --s6: 32px; --s7: 48px; --s8: 64px;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--verideep-bg);
+    color: var(--verideep-ink);
+    font-family: 'Inter', 'Noto Sans SC', 'PingFang SC', system-ui, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3 {
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--verideep-ink);
+  }
+
+  ::selection {
+    background: var(--verideep-primary-tint);
+  }
+
+  /* 全站统一缓动 */
+  a, button {
+    transition: all 0.25s var(--ease);
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--verideep-line);
+    border-radius: 999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--verideep-primary-soft);
+  }
+}
+
+@layer components {
+  /* 玻璃拟态 */
+  .v-glass {
+    background: rgba(13, 27, 38, 0.78);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* 通用卡片 */
+  .v-card {
+    background: var(--verideep-card);
+    border-radius: var(--r-card);
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--verideep-line);
+  }
+
+  /* 主按钮 */
+  .v-btn-primary {
+    background: var(--verideep-primary);
+    color: #061018;
+    border-radius: var(--r-btn);
+    transition: all 0.2s var(--ease);
+  }
+  .v-btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-float);
+    background: var(--verideep-primary-deep);
+  }
+
+  /* 骨架屏 */
+  .v-skeleton {
+    background: linear-gradient(
+      90deg,
+      rgba(32, 53, 66, 0.5) 25%,
+      rgba(52, 78, 92, 0.9) 37%,
+      rgba(32, 53, 66, 0.5) 63%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.6s linear infinite;
+    border-radius: var(--r-btn);
+  }
+}
